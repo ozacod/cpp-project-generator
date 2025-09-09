@@ -1,0 +1,14 @@
+# C++ Project Generator Requirements
+# This tool uses only Python standard library modules
+# No external dependencies required
+
+# Python 3.6+ required for:
+# - pathlib (Python 3.4+)
+# - f-strings (Python 3.6+)
+# - argparse (Python 2.7+)
+# - subprocess (Python 2.7+)
+# - datetime (Python 2.7+)
+# - json (Python 2.7+)
+# - os (Python 2.7+)
+# - sys (Python 2.7+)
+# - shutil (Python 2.7+)
