@@ -19,7 +19,12 @@ This document provides instructions for running the C++ Project Generator web in
 2. **Access the application:**
    - Open your browser and go to `http://localhost:3000`
 
-3. **Stop the application:**
+3. **Test the Docker build:**
+   ```bash
+   ./test-docker.sh
+   ```
+
+4. **Stop the application:**
    ```bash
    docker-compose down
    ```
