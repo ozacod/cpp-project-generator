@@ -38,7 +38,7 @@ export default function ProjectForm({ onProjectCreated }: ProjectFormProps) {
           id: result.projectId.toString(),
           name: formData.name,
           type: formData.type,
-          dependencies: formData.dependencies ? formData.dependencies.split(',').map(d => d.trim()) : [],
+          dependencies: formData.dependencies ? formData.dependencies.split(',').map((d: string) => d.trim()) : [],
           cppStandard: formData.cppStandard,
           cmakeVersion: formData.cmakeVersion,
           includeTests: formData.includeTests,

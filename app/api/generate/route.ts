@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Parse dependencies
-    const depsArray = dependencies ? dependencies.split(',').map(d => d.trim()).filter(d => d) : []
+    const depsArray = dependencies ? dependencies.split(',').map((d: string) => d.trim()).filter((d: string) => d) : []
 
     const projectData = {
       name,

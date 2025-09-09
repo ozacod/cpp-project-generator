@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
-RUN npm ci --only=production
+RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -24,6 +24,13 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
 
+# Production dependencies
+FROM base AS prod-deps
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production && npm cache clean --force
+
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
@@ -34,6 +41,9 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
+
+# Copy production dependencies
+COPY --from=prod-deps /app/node_modules ./node_modules
 
 # Copy the public folder from the project as this is not included in the build process
 COPY --from=builder /app/public ./public
