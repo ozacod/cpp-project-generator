@@ -15,11 +15,38 @@ A powerful command-line tool for generating modern C++ libraries and application
 
 ## Installation
 
+### Option 1: Docker (Recommended)
+
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd repo-creater
+git clone https://github.com/ozacod/cpp-project-generator.git
+cd cpp-project-generator
 
+# Run with Docker Compose
+docker-compose up --build
+
+# Access the web interface at http://localhost:3000
+```
+
+### Option 2: Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/ozacod/cpp-project-generator.git
+cd cpp-project-generator
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Access the web interface at http://localhost:3000
+```
+
+### Option 3: Command Line Tool (Legacy)
+
+```bash
 # Run the installation script
 ./install.sh
 
@@ -27,9 +54,49 @@ cd repo-creater
 python3 cpp_project_generator.py --help
 ```
 
+## Docker Usage
+
+### Quick Start
+
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Access the web interface at http://localhost:3000
+```
+
+### Development Mode
+
+```bash
+# Run in development mode with hot reload
+docker-compose -f docker-compose.dev.yml up --build
+```
+
+### Manual Docker Commands
+
+```bash
+# Build the image
+docker build -t cpp-project-generator .
+
+# Run the container
+docker run -p 3000:3000 cpp-project-generator
+
+# Run with data persistence
+docker run -p 3000:3000 -v $(pwd)/data:/app/data cpp-project-generator
+```
+
+For detailed Docker documentation, see [README-DOCKER.md](README-DOCKER.md).
+
 ## Usage
 
-### Interactive Mode (Recommended)
+### Web Interface (Recommended)
+
+1. Start the application using Docker or local development
+2. Open your browser and go to `http://localhost:3000`
+3. Fill out the project form with your desired settings
+4. Click "Generate Project" to create and download your C++ project
+
+### Interactive Mode (Legacy CLI)
 
 ```bash
 cpp-project-generator --interactive
